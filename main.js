@@ -1,4 +1,7 @@
+nx=0;
+ny=0;
 function preload() {
+   m=loadImage("https://i.postimg.cc/bryYR5nb/d3c172a4cb66495cdf11d66d8e0388c9.jpg");
 }
 function setup()  {
    canvas=createCanvas(300, 300);
@@ -15,12 +18,15 @@ function modelLoaded() {
  function gotposes(results) {
    if(results.length>0) {
       console.log(results);
-      console.log("nose X = "+results[0].pose.nose.x);
-      console.log("nose y = "+results[0].pose.nose.y);
+      nx=results[0].pose.nose.x-15;
+      ny=results[0].pose.nose.y-5;
+      console.log("nose X = "+nx);
+      console.log("nose y = "+ny);
    }
 }
 function draw() {
    image(video, 0, 0, 300, 300);
+   image(m, nx, ny, 30, 30);
 }
 function tss() {
    save("filter.png");
